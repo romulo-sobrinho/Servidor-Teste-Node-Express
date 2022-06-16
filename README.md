@@ -1,5 +1,3 @@
-![Vira-lataflix_banner](https://user-images.githubusercontent.com/68918326/157784258-f3a14645-8d67-4e71-89d4-38559ae545e9.PNG)
-
 <hr>
 <h3 align="center">🎖️PROJETO DE ESTUDO🎖️</h3>
 <hr>
