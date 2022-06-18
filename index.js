@@ -3,11 +3,22 @@ const path = require('path');
 const app = express();
 const PORT = 5000;
 
+let score = 1;
+
+let consoleMethod = (req, res, next)=>{
+  
+  console.log(`O método utilizado foi: ${req.method} - chamada de nº: ${score}`);
+  score += 1;
+  next();
+}
+
+let answer = (req, res)=>{
+  res.send("<h1>Servidor acessado via método GET</h1>");
+}
+
 app.use("/meuservidor", express.static(path.join(__dirname, 'client')));
 
-app.get("/", (req, res)=>{
-  res.send("<h1>Servidor acessado via método GET</h1>");
-})
+app.get("/", consoleMethod, answer);
 
 app.post("/", (req, res)=>{
   res.send("<h1>Servidor acessado via método POST</h1>");
