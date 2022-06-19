@@ -2,6 +2,31 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const PORT = 5000;
+const bodyParser = require('body-parser');
+
+
+let students = [
+  {id: 0, name:"João Marcos", status:"approved"},
+  {id: 1, name:"Maria Vitória", status:"approved"},
+  {id: 2, name:"Ana Cecília", status:"approved"},
+  {id: 3, name:"Lucas Otávio", status:"approved"}
+]
+
+app.use(bodyParser.urlencoded());
+
+app.get("/student", (req, res)=>{
+  student = students[req.body.id];
+  res.json(student);
+});
+
+
+
+
+
+
+
+
+
 
 let score = 1;
 
@@ -15,8 +40,6 @@ let consoleMethod = (req, res, next)=>{
 let answer = (req, res)=>{
   res.send("<h1>Servidor acessado via método GET</h1>");
 }
-
-app.use("/meuservidor", express.static(path.join(__dirname, 'client')));
 
 app.get("/", consoleMethod, answer);
 
