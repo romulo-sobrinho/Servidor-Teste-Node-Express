@@ -3,7 +3,11 @@ const path = require('path');
 const app = express();
 const PORT = 5000;
 const bodyParser = require('body-parser');
+const teachers = require('./routes/teachers');
 
+app.use(bodyParser.urlencoded());
+
+app.use("/teachers", teachers);
 
 let students = [
   {id: 0, name:"João Marcos", status:"approved"},
@@ -12,20 +16,11 @@ let students = [
   {id: 3, name:"Lucas Otávio", status:"approved"}
 ]
 
-app.use(bodyParser.urlencoded());
 
 app.get("/student", (req, res)=>{
   student = students[req.body.id];
   res.json(student);
 });
-
-
-
-
-
-
-
-
 
 
 let score = 1;
